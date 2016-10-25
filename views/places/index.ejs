@@ -1,0 +1,8 @@
+<h1>List of saved places</h1>
+	<div id='savedPlaces'>
+		<% places.forEach(function(place){ %>
+			<p>
+				<a href="/places/<%= place.name%>"><%= place.name %></a>
+			</p>
+		<% }) %>
+	</div>

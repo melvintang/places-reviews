@@ -1,0 +1,31 @@
+<h1>Review of <%= review.place_id.name%></h1>
+<form action="/reviews/<%= review.id %>/edit" method="POST">
+
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="text" class="form-control" id="items" name = "review[title]" placeholder="Title" value="<%=review.title%>">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleTextarea">Comments</label>
+    <textarea class="form-control" id="exampleTextarea" rows="3" name = "review[comments]" ><%=review.comments%></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="rating">Overall Rating (1=meh, 5=omg yes):</label>
+    <select class="form-control" id="rating" name = "review[rating]">
+      <option><%=review.rating%></option>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </div>
+  <div>
+      <input type="submit" value="Edit!">
+  </div>
+
+
+
+</form>

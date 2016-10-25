@@ -1,0 +1,35 @@
+<h1>Place in detail!</h1>
+
+<p>
+		<h2><%= place.name %></h2>
+		<p>Address:
+			<ul><%= place.address %></ul>
+			<ul><%= place.city %>, <%= place.state %></ul>
+		</p>
+		<p>Phone:
+			<ul><%= place.phone %></ul>
+		</p>
+		<p>Hours:</p>
+			<ul></ul>
+</p>
+	<p>
+		<h3><%= place.name %>'s reviews: </h3>
+			<% reviews.forEach(function(review){ %>
+			<p>
+				<%= review.rating %>
+			</p>
+			<p>
+				<%= review.postDate %>
+			</p>
+			<p>
+				<%= review.comments %>
+			</p>
+			<% }) %>
+	</p>
+
+	<p>
+		<a href="/places/<%= place.name%>/newReview">Add a new review</a>
+	</p>
+	<p>
+		<a href="/places">See all places</a>
+	</p>

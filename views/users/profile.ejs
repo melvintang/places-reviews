@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+    <title>Node Authentication</title>
+    <style>
+        body        { padding-top:80px; word-wrap:break-word; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="page-header text-center">
+        <h1><span class="fa fa-anchor"></span> My Profile Page</h1>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div>
+
+    <div class="row">
+
+        <!-- LOCAL INFORMATION -->
+        <h1>Hey <%= user.local.name%>!</h1>
+        <h3>Favorite Places</h3>
+
+        <h3>Reviews</h3>
+        <% reviews.forEach(function(review){ %>
+          <h4 class="text-muted"><a href="/reviews/<%= review.id%>"><%= review.title%></a> Rating: <%= review.rating %></h4>
+        <% })%>
+        <a href="/places">Browse all places</a>
+        <a href="/places/new">Add a place</a>
+
+    </div>
+
+</div>
+</body>
+</html>

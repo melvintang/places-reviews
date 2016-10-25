@@ -1,0 +1,20 @@
+<h1>A review of <%= review.place_id.name %></h1>
+    <div>
+      <h2> Review Details:</h2>
+      <h3>
+        Title: <%= review.title%>
+      </h3>
+      <h3>Rating: <%= review.rating %></h3>
+      <p>
+        Comments: <%= review.comments%>
+      </p>
+    </div>
+    <div>
+      <%=console.log(review._id);%>
+      <p>
+         <a href="<%= review._id%>/edit">Edit this review</a>
+      </p>
+      <form action="/reviews/<%= review._id%>?_method=DELETE" method="POST">
+        <input type="submit" value="DELETE">
+      </form>
+    </div>
