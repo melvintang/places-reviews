@@ -21,7 +21,7 @@ function initMap()
     zoom: 8
   });
 
-  fetch('markers.json')
+  fetch('../markers.json')
     .then(function(response){return response.json()})
     .then(plotMarkers);
 }

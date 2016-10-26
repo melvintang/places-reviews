@@ -81,11 +81,6 @@ router.get('/places', function (req, res) {
   })
 })
 
-// Get a new form of place only!
-router.get('/places/new', isLoggedIn, function (req, res) {
-  res.render('places/new')
-})
-
 // Fill in the form of a place only! Adding of places = ok
 router.post('/places', function (req, res) {
   var newPlace = new Place ({
@@ -96,27 +91,36 @@ router.post('/places', function (req, res) {
     phone: req.body.place.phone
   })
   newPlace.save(function(err, savedPlace) {
-    res.send(savedPlace)
-    // res.redirect ('/places')
+    if(err) throw new Error(err);
+    // res.send(savedPlace)
+    res.redirect ('/places')
   })
+})
+
+// Get a new form of place only!
+router.get('/places/new', isLoggedIn, function (req, res) {
+  res.render('places/new')
 })
 
 // Know more about the place via each link in the list of places.
 router.get('/places/:name', function (req, res){
+  console.log(req.params.name)
   Place.findOne ({name: req.params.name}, function (err, place) {
-    Review.find (
-      {
-        place_id: place.id
-      }
-    )
-    .populate('user_id')
-    .exec (function (err, reviews){
+      Review.find (
+        {
+          place_id: place._id
+        }
+      )
+      .populate('user_id')
+      .exec (function (err, reviews){
 
-      // res.send(reviews)
-      res.render('places/onePlace', {place: place, reviews: reviews})
-    })
+        // res.send(reviews)
+        res.render('places/onePlace', {place: place, reviews: reviews})
+      })
+
   })
 })
+
 
 // My adding of reviews
 router.get('/places/:name/newReview', isLoggedIn, function (req, res) {
