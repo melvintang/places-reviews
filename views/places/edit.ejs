@@ -1,3 +1,4 @@
+<h1><%= place.name%> in detail</h1>
 <form id='newPlaceForm' action="/places" method="POST">
 		<div>
 			<label for="name">Name:</label>
@@ -20,9 +21,6 @@
 			<input type="text" name="place[phone]" id="phone">
 		</div>
 		<div>
-			<input type="submit" value="Add!">
+			<input type="submit" value="Edit!">
 		</div>
 	</form>
-	<a href="/places">Browse all places</a>
-	<a href="/profile">Go back to your profile</a>
-	<a href="/logout" class="btn btn-default btn-sm">Logout</a>

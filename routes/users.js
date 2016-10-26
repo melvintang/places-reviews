@@ -59,16 +59,11 @@ router.get('/profile', isLoggedIn, function (req, res) {
   })
     .populate('place_id')
     .exec(function (err, reviews) {
-      res.render('users/profile', {user: req.user, reviews: reviews})
+      res.render('users/profile', {
+        user: req.user,
+        reviews: reviews
+      })
     })
-// Place.find({}, function(err, places){
-//   Review.find({
-//     user_id: req.user.id
-//   }
-// ).populate('place').exec(function(err, reviews){
-//   res.render('users/profile', {user:req.user, reviews:reviews, places:places})
-// })
-// })
 })
 
 router.get('/logout', function (req, res) {
@@ -93,31 +88,33 @@ router.get('/places/new', isLoggedIn, function (req, res) {
 
 // Fill in the form of a place only! Adding of places = ok
 router.post('/places', function (req, res) {
-  Place.create({name: req.body.name, address: req.body.address, city: req.body.city, state: req.body.state, phone: req.body.phone},
-    function (err, place) {
-      if (err) {
-        console.log(err)
-        res.render('places/new')
-      }else {
-        place.save(function (err) {
-          if (err) throw err
-          res.redirect('/places')
-        })
-      }
-    })
+  var newPlace = new Place ({
+    name: req.body.place.name,
+    address: req.body.place.address,
+    city: req.body.place.city,
+    state: req.body.place.state,
+    phone: req.body.place.phone
+  })
+  newPlace.save(function(err, savedPlace) {
+    res.send(savedPlace)
+    // res.redirect ('/places')
+  })
 })
 
 // Know more about the place via each link in the list of places.
-router.get('/places/:name', function (req, res) {
-  Place.findOne({name: req.params.name}, function (err, place) {
-    Review.find(
+router.get('/places/:name', function (req, res){
+  Place.findOne ({name: req.params.name}, function (err, place) {
+    Review.find (
       {
-        place_id: place._id
-      },
-      function (err, reviews) {
-        // res.send(reviews)
-        res.render('places/onePlace', {place: place, reviews: reviews})
-      })
+        place_id: place.id
+      }
+    )
+    .populate('user_id')
+    .exec (function (err, reviews){
+
+      // res.send(reviews)
+      res.render('places/onePlace', {place: place, reviews: reviews})
+    })
   })
 })
 

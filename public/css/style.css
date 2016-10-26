@@ -9,4 +9,12 @@ input[type="submit"], input[type="submit"]:hover {
 }
 
 
-<div class="navbar-header">
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#map {
+  height: 500px;
+}

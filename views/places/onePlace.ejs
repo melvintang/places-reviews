@@ -16,7 +16,7 @@
 		<h3><%= place.name %>'s reviews: </h3>
 			<% reviews.forEach(function(review){ %>
 			<p>
-				<%= review.rating %>
+				<%= review.rating %> by <%=review.user_id.local.name%>
 			</p>
 			<p>
 				<%= review.postDate %>
@@ -27,9 +27,9 @@
 			<% }) %>
 	</p>
 
-	<p>
 		<a href="/places/<%= place.name%>/newReview">Add a new review</a>
 	</p>
 	<p>
 		<a href="/places">See all places</a>
 	</p>
+		<a href="/profile">Go back to your profile</a>
