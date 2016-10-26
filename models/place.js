@@ -8,7 +8,7 @@ var placeSchema = new mongoose.Schema({
 						address: String,
 						city: String,
 						state: String,
-						phone: Number
+						phone: String
 						// reviews: [{
 						// 	type: mongoose.Schema.Types.ObjectId,
 						// 	ref: "Review"
