@@ -108,7 +108,7 @@ router.get('/places/:name', function (req, res){
   Place.findOne ({name: req.params.name}, function (err, place) {
       Review.find (
         {
-          place_id: place._id
+          place_id: place.id
         }
       )
       .populate('user_id')
@@ -153,7 +153,7 @@ router.get('/reviews/:id', function (req, res) {
   Review.findById(req.params.id)
     .populate('place_id')
     .exec(function (err, review) {
-      console.log(review.place)
+      
       res.render('reviews/OneReview', {review: review})
     })
 })

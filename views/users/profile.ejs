@@ -10,22 +10,19 @@
 <div class="container">
 
     <div class="page-header text-center">
-        <h1><%=user.local.name%>'s Profile</h1>
+        <h1>Profile for username <%=user.local.name%></h1>
 
     </div>
 
     <div class="row">
 
         <!-- LOCAL INFORMATION -->
-        <h1>Hey <%= user.local.name%>!</h1>
+
 
         <h3><%=user.local.name%>'s Reviews: </h3>
         <% reviews.forEach(function(review){ %>
-          <h4 class="text-muted"><a href="/reviews/<%= review.id%>"><%= review.title%></a> Rating: <%= review.rating %></h4>
+          <h4 class="text-muted"><a href="/reviews/<%= review.id%>"><%= review.comments%></a> Rating: <%= review.rating %></h4>
         <% })%>
-        <a href="/places">Browse all places</a>
-        <a href="/places/new">Add a place</a>
-        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
 
     </div>
 

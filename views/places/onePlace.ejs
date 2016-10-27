@@ -1,7 +1,6 @@
-<h1>Place in detail!</h1>
+<h1>About this place <%= place.name %></h1>
 
 <p>
-		<h2><%= place.name %></h2>
 		<p>Address:
 			<ul><%= place.address %></ul>
 			<ul><%= place.city %>, <%= place.state %></ul>
@@ -29,7 +28,3 @@
 
 		<a href="/places/<%= place.name%>/newReview">Add a new review</a>
 	</p>
-	<p>
-		<a href="/places">See all places</a>
-	</p>
-		<a href="/profile">Go back to your profile</a>
