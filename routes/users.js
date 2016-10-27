@@ -13,7 +13,7 @@ function isLoggedIn (req, res, next) {
   if (req.isAuthenticated())
     return next()
   // if they aren't redirect them to the home page
-  res.redirect('/')
+  res.redirect('/login')
 }
 
 function isNotLoggedIn (req, res, next) {
@@ -24,7 +24,7 @@ function isNotLoggedIn (req, res, next) {
 }
 
 router.get('/', function (req, res) {
-  res.render('users/auth'); // load the index.ejs file
+  res.redirect('/places'); // load the index.ejs file
 })
 
 // login routes
@@ -153,7 +153,7 @@ router.get('/reviews/:id', function (req, res) {
   Review.findById(req.params.id)
     .populate('place_id')
     .exec(function (err, review) {
-      
+
       res.render('reviews/OneReview', {review: review})
     })
 })

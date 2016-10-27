@@ -6,10 +6,7 @@ var userSchema = new mongoose.Schema({
     name: String,
     email: String,
     password: String,
-    favPlaces: [{
-              type: mongoose.Schema.Types.ObjectId,
-              ref: "Place"
-    }],
+    
     // Reviews: [{
     //           type: mongoose.Schema.Types.ObjectId,
     //           ref: "Review"

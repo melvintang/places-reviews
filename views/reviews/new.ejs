@@ -1,17 +1,18 @@
+<div class="text-center">
 <h2>Add your review of <%= place.name%></h2>
-<form action="/places/<%= place.name%>/" method="POST">
+<form action="/places/<%= place.name%>/" method="POST" class="form-action">
 
-  <div class="form-group">
+  <div class="form-group" class="text-center">
     <label for="title">Title</label>
     <input type="text" class="form-control" id="items" name = "review[title]" placeholder="Title">
   </div>
 
-  <div class="form-group">
+  <div class="form-group" class="text-center">
     <label for="exampleTextarea">Comments</label>
     <textarea class="form-control" id="exampleTextarea" rows="3" name = "review[comments]" ></textarea>
   </div>
 
-  <div class="form-group">
+  <div class="form-group" class="text-center">
     <label for="rating">Overall Rating (1=meh, 5=omg yes):</label>
     <select class="form-control" id="rating" name = "review[rating]">
       <option>1</option>
@@ -24,3 +25,4 @@
 
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+</div>

@@ -1,30 +1,43 @@
+
+<div class="text-center">
 <h1>About this place <%= place.name %></h1>
 
-<p>
-		<p>Address:
-			<ul><%= place.address %></ul>
-			<ul><%= place.city %>, <%= place.state %></ul>
-		</p>
-		<p>Phone:
-			<ul><%= place.phone %></ul>
-		</p>
-		<p>Hours:</p>
-			<ul></ul>
-</p>
+<div class="container">
+	<div class="row">
+		<table class="table">
+		  <thead class="thead-default">
+		    <tr>
+		      <th class="th">Address</th>
+					<th class="th">Phone</th>
+					<th class="th">Hours</th>
+		    </tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><%= place.address %>, city - <%= place.city %>, state - <%= place.state %> </td>
+					<td><%= place.phone %></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</div>
 	<p>
 		<h3><%= place.name %>'s reviews: </h3>
 			<% reviews.forEach(function(review){ %>
 			<p>
-				<%= review.rating %> by <%=review.user_id.local.name%>
+				Rating: <%= review.rating %> by <%=review.user_id.local.name%>
 			</p>
 			<p>
-				<%= review.postDate %>
+				Posted on: <%= review.postDate %>
 			</p>
 			<p>
-				<%= review.comments %>
+				Comments: <%= review.comments %>
 			</p>
 			<% }) %>
 	</p>
 
 		<a href="/places/<%= place.name%>/newReview">Add a new review</a>
 	</p>
+</div>

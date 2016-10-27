@@ -1,7 +1,8 @@
 body {
-  background: #006599 url('http://deskbg.com/i/c/1920x1200/wpp/2/2633/simpsons-nelson-haha-desktop-background.jpg') no-repeat 100% 100%;
+  background: #006599  no-repeat 100% 100%;
   background-size: contain;
   color: white;
+  position:
 }
 
 input[type="submit"], input[type="submit"]:hover {
@@ -15,6 +16,28 @@ html, body {
   padding: 0;
 }
 
-#map {
-  height: 400px;
+.th {
+  text-align: center;
 }
+
+.form-group {
+  margin: 5% auto;
+}
+
+.form-control {
+  display: inline-block;
+  width: 200px;
+}
+
+.form-action {
+  margin-top: 10%;
+  text-align: right;
+  margin-right: 44%;
+}
+
+button.btn.btn-default {
+  display: inline-block;
+}
+/*
+<input type="text" class="form-control" placeholder="Search">
+<button type="submit" class="btn btn-default">Submit</button>*/

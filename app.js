@@ -50,6 +50,7 @@ app.use(flash())
 app.use(express.static(__dirname + '/public'))
 
 var usersRoutes = require('./routes/users')
+// var ajaxRoutes = require('./routes/places_api')
 
 
 app.use(bodyParser.json()) // to parse ajax json req
@@ -60,6 +61,7 @@ app.use(bodyParser.urlencoded({
 // Calling a exported function: input = package passport (from config folder) in for configuration
 require('./config/passport') (passport)
 
+// app.use('/api/places', ajaxRoutes) // only handle ajax request
 app.use('/', usersRoutes)
 // only handle ajax request
 
