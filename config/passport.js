@@ -31,7 +31,10 @@ module.exports = function (passport) {
           return next(null, false, req.flash('signupMessage', 'Email has been taken'))
         } else {
           User.create(req.body.user, function (err, newUser) {
-            if (err) throw err
+            if (err) {
+              console.log(err)
+              return next(null, false, req.flash('errorMessage', err.errors))
+            }
             return next(null, newUser)
           })
         }
@@ -58,7 +61,8 @@ module.exports = function (passport) {
         if (err) return next(err)
 
         if (authenticated) {
-          return next(null, foundUser, req.flash('loginMessage', 'Hello logged in user ' + foundUser.local.name))
+          return next(null, foundUser)
+          // return next(null, foundUser, req.flash('loginMessage', 'Hello logged in user ' + foundUser.local.name))
         } else {
           return next(null, false, req.flash('loginMessage', 'Password don\'t match'))
         }

@@ -5,6 +5,7 @@ var passport = require('passport')
 var User = require('../models/user')
 var Review = require('../models/review')
 var Place = require('../models/place')
+var userController = require('../controllers/userController')
 
 // route middleware to make sure a user is logged in
 function isLoggedIn (req, res, next) {
@@ -28,10 +29,8 @@ router.get('/', function (req, res) {
 })
 
 // login routes
-router.get('/login', isNotLoggedIn, function (req, res) {
-  // render the page and pass in any flash data if it exists
-  res.render('users/login', { message: req.flash('loginMessage') })
-})
+// GET /login: Make sure user is not logged in 1st
+router.get('/login', isNotLoggedIn, userController.getLogin)
 
 // process the login form
 router.post('/login', passport.authenticate('local-login', {
@@ -41,10 +40,7 @@ router.post('/login', passport.authenticate('local-login', {
 }))
 
 // signup routes
-router.get('/signup', isNotLoggedIn, function (req, res) {
-  // render the page and pass in any flash data if it exists
-  res.render('users/signup', { message: req.flash('signupMessage') })
-})
+router.get('/signup', isNotLoggedIn, userController.getSignup)
 
 // process the signup form
 router.post('/signup', passport.authenticate('local-signup', {
@@ -66,7 +62,7 @@ router.get('/profile', isLoggedIn, function (req, res) {
     })
 })
 
-router.get('/logout', function (req, res) {
+router.get('/logout', isLoggedIn, function (req, res) {
   req.logout()
   res.redirect('/')
 })

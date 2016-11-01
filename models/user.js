@@ -3,10 +3,27 @@ var bcrypt = require('bcrypt')
 
 var userSchema = new mongoose.Schema({
   local: {
-    name: String,
-    email: String,
-    password: String,
-    
+    name: {
+    type: String,
+    trim: true,
+    unique: true,
+    required: true
+    },
+    email: {
+      type: String,
+      required: [true, 'Why no email?'],
+      match: /.+\@.+\..+/
+    },
+    password: {
+       type: String,
+       validate: [
+         function(password) {
+           return password.length >= 6;
+         },
+         'Password should be longer'
+       ]
+     },
+
     // Reviews: [{
     //           type: mongoose.Schema.Types.ObjectId,
     //           ref: "Review"

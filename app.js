@@ -53,13 +53,18 @@ var usersRoutes = require('./routes/users')
 // var ajaxRoutes = require('./routes/places_api')
 
 
-app.use(bodyParser.json()) // to parse ajax json req
+app.use(bodyParser.json()) // to parse ajax json req only
 app.use(bodyParser.urlencoded({
-  extended: true
+  extended: true // for nested object in req.body.object
 })) // to parse form submitted data
 
 // Calling a exported function: input = package passport (from config folder) in for configuration
 require('./config/passport') (passport)
+
+app.use(function (req, res, next) {
+ res.locals.user = req.user
+ next()
+})
 
 // app.use('/api/places', ajaxRoutes) // only handle ajax request
 app.use('/', usersRoutes)

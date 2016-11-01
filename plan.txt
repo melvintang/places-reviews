@@ -1,0 +1,39 @@
+Plan round 1:
+1. npm init : To start the package.json
+2. express : To use express server
+3. Model schema:
+4. routes
+5. mongoose : To access mongoDB by mongoose methods
+6. bodyParser: To parse req.body.thing as object - so as to save in mongoDB
+7. MongoDB
+8. ejs
+9  views
+10 Layout-ejs
+
+Plan round 2:
+1. newUser
+2. .save()
+3. Refactor schema to have validation
+4. Handle error
+5. Redirect to the same page
+6. Flash (1st, npm i connect-flash --save, then require('connect-flash'), then app.use(flash()))
+
+7. Session (flash requires session as flash data is stored in session)
+(npm i express-session --save, require session, app.use session)
+8. Render the error message
+Under post request: if (err) {err.errors = message}
+Handling message in view: <%= message %> if see [object OBJECT], use JSON.stringify(message) in view
+Go to jsonformatter.curiousconcept.com to see error
+In view for flash message:
+<%= JSON.stringify(message) %>
+<ul>
+<% for (var key in message[0]) {
+  <li> <%= message[0][key].message %> </li>
+<% } %>
+</ul>
+}
+
+Plan round 3:
+1. separate router
+2. separate controller
+3. separate model
